@@ -17,25 +17,25 @@ class ProductSeeder extends Seeder
     {
         DB::table('products')->insert([
             [
-                'name' => 'Iphone 13 Mobile',
+                'name' => 'AC Cool',
                 "price" => "80000",
-                "description" => "Best SmartPhone with 8Gb Ram 256Gb Storage",
-                "category" => "Mobile",
-                "gallery" => "https://www.phonemera.com/image/cache/catalog/APPLE/apple-iphone-13-Starlight/apple_iphone_13_starlight_4-200x200.jpg",
+                "description" => "Best Cooling with Fast Cool",
+                "category" => "AC",
+                "gallery" => "https://5.imimg.com/data5/SELLER/Default/2020/11/RZ/DA/OH/20728860/asgg12cgta-b-500x500.png",
             ],
             [
-                'name' => 'Microsoft Laptop',
-                "price" => "500000",
-                "description" => "Good For Coding Etc",
-                "category" => "Laptop",
-                "gallery" => "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW16e0d?ver=358e&q=90&m=6&h=200&w=200&b=%23FFFFFFFF&o=f&aim=true",
+                'name' => 'Head Ear',
+                "price" => "5000",
+                "description" => "Good For Sound",
+                "category" => "Earphone",
+                "gallery" => "https://t3.ftcdn.net/jpg/03/89/61/56/360_F_389615629_QUCHDiTHaurKGcQAw1Z7pp2LZLy9OUye.jpg",
             ],
             [
-                'name' => 'Tv BPL',
-                "price" => "50000",
-                "description" => "Best Tv with HD High Quility",
-                "category" => "Tv",
-                "gallery" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2m4qWlf4FtL5109L7vn-v1EupO1DSIvEaFg&s",
+                'name' => 'Smart Watch',
+                "price" => "10000",
+                "description" => "Best Quility All Feature",
+                "category" => "Watch",
+                "gallery" => "https://rukminim2.flixcart.com/image/850/1000/xif0q/shopsy-smartwatch/p/b/6/1-44-android-ios-t500-smart-watch-with-bluetooth-calling-black-original-imagvy24hyyqbzvm.jpeg?q=90&crop=false",
             ]
         ]);
     }
