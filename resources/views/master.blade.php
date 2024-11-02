@@ -16,7 +16,7 @@
             padding-top: 100px; 
         }
         img.slider-img {
-            height: 500px !important;
+            height: 400px !important;
             margin-left: 200px;
         }
         .custom-product {
