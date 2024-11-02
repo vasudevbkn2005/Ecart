@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/logout', function () {
+    FacadesSession::forget('user');
+    return redirect('login');
+});
 Route::view('/login', 'login');
 Route::post("/login",[UserController::class,'login']);
 Route::get("/", [ProductController::class, 'index']);
