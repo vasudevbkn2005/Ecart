@@ -29,8 +29,9 @@ if(Session::has('user')) {
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" href="/cartlist">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/004/798/846/small/shopping-cart-logo-or-icon-design-vector.jpg" height="30px" width="30px" alt="Cart">
-            Cart ({{$total}})
+             
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/004/798/846/small/shopping-cart-logo-or-icon-design-vector.jpg"  height="30px" width="30px" alt="Cart" >
+            {{$total}}
           </a>
         </li>
         @if(Session::has('user'))
