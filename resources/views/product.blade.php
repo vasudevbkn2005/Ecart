@@ -1,59 +1,71 @@
 @extends('master')
+
 @section('content')
-    <div class="custom-product">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-inner" style="margin-bottom: 25px">
-                <h1 class="container">Best Product</h1>
-                @foreach ($products as $item)
-                    <div class="carousel-item {{ $item['id'] == 1 ? 'active' : '' }}" data-bs-interval="10000">
-                        <a href="detail/{{ $item['id'] }}">
-                            <img class="slider-img" src="{{ $item['gallery'] }}" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5 style="text-align: end">{{ $item['name'] }}</h5>
-                                <p style="text-align: end">{{ $item['description'] }}</p>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <hr>
-        <div style="margin-bottom: 25px" class="container">
-            <h1>Trending Product</h1>
-        </div>
-        <div class="trending-wrapping">
-            <div class="row">
-                @foreach ($products as $item)
-                    <div class="col-md-3 trending-item" style="border: 1px solid rgb(249, 246, 246); margin-bottom: 20px;">
-                        <a href="detail/{{ $item['id'] }}" style="text-decoration: none">
-                            <img class="trending-image" style="margin-bottom: 10px; cursor: pointer;"
-                                src="{{ $item['gallery'] }}">
-                            <form action="/add_to_cart" method="POST" class="mb-3">
+<div class="custom-product">
+    <div class="container mb-4">
+        <h1 class="text-center">Products</h1>
+    </div>
+    <div class="trending-wrapping">
+        <div class="d-flex flex-wrap justify-content-center">
+            @foreach ($products as $item)
+                <div class="trending-item col-md-3 col-sm-6 mb-4">
+                    <a href="detail/{{ $item['id'] }}" class="text-decoration-none">
+                        <img class="trending-image img-fluid" src="{{ $item['gallery'] }}" alt="{{ $item['name'] }}">
+                        <div class="p-3">
+                            <h5 class="text-black">{{ $item['name'] }}</h5>
+                            <p class="text-muted">{{ Str::limit($item['description'], 50) }}</p>
+                            {{-- <form action="/add_to_cart" method="POST" class="mb-3">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $item['id'] }}">
-                                <button class="btn btn-success btn-lg w-100">Add To Cart</button>
-                            </form>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
+                                <button class="btn btn-success w-100">Add To Cart</button>
+                            </form> --}}
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
-    <hr>
+</div>
+
+<hr>
 @endsection
+
 <style>
-    .btn-primary {
-        width: 100%;
-        /* Full width for buttons */
-        margin-top: 10px;
-        /* Spacing above the button */
+    .custom-product {
+        padding: 40px 15px;
+        background-color: #f8f9fa; /* Light background for better contrast */
+    }
+
+    .trending-image {
+        height: 200px; /* Set a fixed height for trending images */
+        object-fit: cover; /* Ensures images cover the area */
+        transition: transform 0.3s; /* Smooth image transition */
+    }
+
+    .trending-item {
+        transition: transform 0.3s, box-shadow 0.3s; /* Add transition for effects */
+        width: 100%; /* Ensures the item uses full width in the flex container */
+        max-width: 250px; /* Sets a maximum width for each item */
+    }
+
+    .trending-item:hover {
+        transform: scale(1.05); /* Slight zoom effect */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+    }
+
+    .btn-success {
+        background-color: #28a745; /* Green color for buttons */
+        border-color: #28a745; /* Border color matching button */
+    }
+
+    .btn-success:hover {
+        background-color: #218838; /* Darker green on hover */
+        border-color: #1e7e34; /* Darker border on hover */
+    }
+
+    @media (max-width: 768px) {
+        .trending-item {
+            margin-bottom: 20px; /* Extra margin for smaller screens */
+        }
     }
 </style>

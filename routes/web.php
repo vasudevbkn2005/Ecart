@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Session as FacadesSession;
 
 Route::get('/logout', function () {
     FacadesSession::forget('user');
-    return redirect('login');
+    return redirect('/');
 });
 Route::view('/login', 'login');
 Route::view('/register', 'register');
@@ -31,3 +31,5 @@ Route::post("add_to_cart", [ProductController::class, 'add']);
 Route::get("/cartlist", [ProductController::class, 'cart']);
 Route::get("/removeCart/{id}", [ProductController::class, 'remove']);
 Route::get("/order", [ProductController::class, 'order']);
+Route::post("/orderplace", [ProductController::class, 'orderplace']);
+Route::get("/myorders", [ProductController::class, 'myorder']);
