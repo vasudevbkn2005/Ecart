@@ -12,30 +12,48 @@
         </div>
     </div>
 </footer>
+
 <style>
     footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-.social-links {
-    margin-top: 10px;
-}
+    .social-links {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center; /* Center align social icons */
+        flex-wrap: wrap; /* Wraps icons to the next line if necessary */
+    }
 
-.social-links a {
-    margin: 0 10px;
-}
+    .social-links a {
+        margin: 0 15px; /* Increased margin for better spacing */
+    }
 
-.social-links img {
-    width: 30px; /* Adjust size as needed */
-    height: auto;
-}
+    .social-links img {
+        width: 30px; /* Adjust size as needed */
+        height: auto;
+        transition: transform 0.2s; /* Smooth scaling effect */
+    }
 
+    .social-links img:hover {
+        transform: scale(1.1); /* Slightly scale up on hover */
+    }
+
+    @media (max-width: 600px) {
+        footer {
+            padding: 15px; /* Adjust padding for smaller screens */
+        }
+
+        .social-links a {
+            margin: 0 5px; /* Reduce margin on smaller screens */
+        }
+    }
 </style>

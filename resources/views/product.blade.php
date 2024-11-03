@@ -6,7 +6,7 @@
                 <h1 class="container">Best Product</h1>
                 @foreach ($products as $item)
                     <div class="carousel-item {{ $item['id'] == 1 ? 'active' : '' }}" data-bs-interval="10000">
-                        <a href="detail/{{$item['id']}}">
+                        <a href="detail/{{ $item['id'] }}">
                             <img class="slider-img" src="{{ $item['gallery'] }}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 style="text-align: end">{{ $item['name'] }}</h5>
@@ -30,16 +30,18 @@
             <h1>Trending Product</h1>
         </div>
         <div class="trending-wrapping">
-            <div class="">
+            <div class="row">
                 @foreach ($products as $item)
-                    <div class="trending-item" style="border: 1px solid rgb(249, 246, 246)">
-                         <a href="detail/{{$item['id']}}" style="text-decoration: none">
-                        <img class="trending-image" style="margin-bottom: 25px; cursor: pointer;"
-                            src="{{ $item['gallery'] }}">
-                        <div class="">
-                            <h5 style="cursor: pointer; color: black;">{{ $item['name'] }}</h5>
-                        </div>
-                         </a>
+                    <div class="col-md-3 trending-item" style="border: 1px solid rgb(249, 246, 246); margin-bottom: 20px;">
+                        <a href="detail/{{ $item['id'] }}" style="text-decoration: none">
+                            <img class="trending-image" style="margin-bottom: 10px; cursor: pointer;"
+                                src="{{ $item['gallery'] }}">
+                            <form action="/add_to_cart" method="POST" class="mb-3">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $item['id'] }}">
+                                <button class="btn btn-success btn-lg w-100">Add To Cart</button>
+                            </form>
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -47,3 +49,11 @@
     </div>
     <hr>
 @endsection
+<style>
+    .btn-primary {
+        width: 100%;
+        /* Full width for buttons */
+        margin-top: 10px;
+        /* Spacing above the button */
+    }
+</style>

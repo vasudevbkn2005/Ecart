@@ -19,6 +19,9 @@ if(Session::has('user')) {
             <li class="nav-item" style="margin-right: 5px">
             <a class="nav-link" href="/">Home</a>
           </li>
+           <li class="nav-item" style="margin-right: 5px">
+            <a class="nav-link" href="/">Order</a>
+          </li>
         <li class="nav-item" style="margin-left: 250px ">
           <form action="/search" class="d-none d-lg-flex"> <!-- Hide on mobile -->
             <input class="form-control me-2 search-box" name="query" autocomplete="off" type="search" placeholder="Search" aria-label="Search">

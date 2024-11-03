@@ -11,6 +11,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures the body takes the full height of the viewport */
+        }
         .custom-login {
             height: 650px;
             padding-top: 100px; 
@@ -36,12 +41,21 @@
         .search-box {
             width: 500px;
         }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto; /* Pushes the footer to the bottom */
+        }
     </style>
 </head>
 
 <body>
     {{ View::make('header') }}
-    @yield('content')
+    <main role="main" class="flex-fill">
+        @yield('content')
+    </main>
     {{ View::make('footer') }}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -49,4 +63,3 @@
     </script>
 </body>
 </html>
-
