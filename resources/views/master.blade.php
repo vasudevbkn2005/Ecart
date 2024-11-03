@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         body {
-            background-color: #f4f4f4; /* Light background for the body */
+            background-color: #f4f4f4;
         }
 
         .navbar {
@@ -115,6 +115,7 @@
     $total = 0;
     if(Session::has('user')) {
         $total = ProductController::cartItem(); 
+        $user = Session::get('user');
     }
     ?>
 
@@ -150,10 +151,15 @@
                     @if(Session::has('user'))
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Session::get('user')['name'] }}
+                                {{ $user['name'] }}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="collapse" data-bs-target="#profileSidebar">Profile</a></li>
+                                <li><a class="dropdown-item" href="/myorders">My Orders</a></li>
+                                @if($user['role'] == 'admin')
+                                    <li><a class="dropdown-item" href="/admin/dashboard">Admin Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="/admin/manage-users">Manage Users</a></li>
+                                @endif
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
                         </li>
@@ -169,20 +175,19 @@
 
     <!-- Profile Sidebar -->
     <div class="collapse" id="profileSidebar">
-    <div class="profile-sidebar p-3 bg-light">
-        <h4>Your Profile</h4>
-
-        @if(Session::has('user'))
-            <p><strong>Name:</strong> {{ Session::get('user')['name'] ?? 'N/A' }}</p>
-            <p><strong>Email:</strong> {{ Session::get('user')['email'] ?? 'N/A' }}</p>
-        @else
-            <p>No user information available. Please log in.</p>
-        @endif
-
-        <a href="/edit-profile" class="btn btn-primary">Edit Profile</a>
-        <a href="/myorders" class="btn btn-secondary">View Orders</a>
+        <div class="profile-sidebar p-3 bg-light">
+            <h4>Your Profile</h4>
+            @if(Session::has('user'))
+                <p><strong>Name:</strong> {{ $user['name'] }}</p>
+                <p><strong>Email:</strong> {{ $user['email'] }}</p>
+                <p><strong>Role:</strong> {{ $user['role'] == 'admin' ? 'Admin' : 'User' }}</p>
+            @else
+                <p>No user information available. Please log in.</p>
+            @endif
+            <a href="/edit-profile" class="btn btn-primary">Edit Profile</a>
+            <a href="/myorders" class="btn btn-secondary">View Orders</a>
+        </div>
     </div>
-</div>
 
     @yield('content')
 
